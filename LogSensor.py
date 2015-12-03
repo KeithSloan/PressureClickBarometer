@@ -2,8 +2,8 @@ import smbus
 import csv
 import time, os
 
-Number = 5
-TimeDelay = 5
+Number = 100
+TimeDelay = 60
 
 def GetTemperature() :
     Temp_LSB = bus.read_byte_data(0x5d, 0x2b)
