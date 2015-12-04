@@ -19,9 +19,11 @@ $MyData->setSerieOnAxis("Temperature",0);
 $MyData->setSerieOnAxis("Pressure",1);
 $MyData->setAxisName(0,"Temperature");
 $MyData->setAxisName(1,"Presssure");
+/* Get latest value before reversing Series for plotting */
+$latest=$MyData->Data['Series']['Pressure']['Data'][0];
+/* Reverse series so latest value is on the right */
 $MyData->reverseSerie("Temperature");
 $MyData->reverseSerie("Pressure");
-
 
 /* Create the chart*/
 $myPicture = new pImage(800,500,$MyData); 
@@ -30,7 +32,6 @@ $myPicture->setGraphArea(90,60,750,450);
 /* Title of Chart */
 $myPicture->drawText(395,55,"Barometer",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $myPicture->drawText(595,55,"Latest Pressure :",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
-$latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawText(700,55,$latest,array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawFilledRectangle(90,60,750,450,array("R"=>0,"G"=>155,"B"=>155,"Surrounding"=>-200,"Alpha"=>10));
