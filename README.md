@@ -9,12 +9,12 @@ As I have a Raspberry Pi as my webserver I liked the idea of adding a web based 
 ## Hardware
 I went for the 2-way shield but there is a single shield availabe`
 ### Hardware used
--[pi2-shield](http://www.mikroe.com/click/pi2-shield/)
--[pressure click](http://www.mikroe.com/click/pressure/)
+* [pi2-shield](http://www.mikroe.com/click/pi2-shield/)
+* [pressure click](http://www.mikroe.com/click/pressure/)
 
 I ordered mine from RS Components### Alternative Hardware
--[Single pi shield](http://www.mikroe.com/click/pi-shield/)
--[Weather Click](http://www.mikroe.com/click/weather/)
+* [Single pi shield](http://www.mikroe.com/click/pi-shield/)
+* [Weather Click](http://www.mikroe.com/click/weather/)
 (Would need different/altered software to read sensor)
 
  Git download
