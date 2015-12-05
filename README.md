@@ -11,8 +11,8 @@ I went for the 2-way shield but there is a single shield availabe`
 ### Hardware used
 * [pi2-shield](http://www.mikroe.com/click/pi2-shield/)
 * [pressure click](http://www.mikroe.com/click/pressure/)
-
-I ordered mine from RS Components### Alternative Hardware
+I ordered mine from RS Components
+### Alternative Hardware
 * [Single pi shield](http://www.mikroe.com/click/pi-shield/)
 * [Weather Click](http://www.mikroe.com/click/weather/)
 (Would need different/altered software to read sensor)
