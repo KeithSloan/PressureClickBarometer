@@ -20,8 +20,9 @@ I ordered mine from RS Components
 
 ### Install this software
 From directory /home/pi issue command
+
 **git clone https://github.com/KeithSloan/PressureClickBarometer.git**
- Git download
+
 ## Setting up I2C
 configuring pi
 Setting up I2C sofware`
