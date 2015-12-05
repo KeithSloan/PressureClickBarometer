@@ -18,6 +18,9 @@ I ordered mine from RS Components
 * [Weather Click](http://www.mikroe.com/click/weather/)
 (Would need different/altered software to read sensor)
 
+### Install this software
+From directory /home/pi issue command
+**git clone https://github.com/KeithSloan/PressureClickBarometer.git**
  Git download
 ## Setting up I2C
 configuring pi
