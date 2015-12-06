@@ -1,4 +1,4 @@
-lick Barometer
+Pressure Click Barometer
 
 A web based Barometer using a Mikrobus Pressure Click on a Raspberry Pi
 
