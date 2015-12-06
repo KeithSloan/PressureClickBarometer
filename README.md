@@ -72,11 +72,11 @@ Installing apache2, php5, php5-gd
 
 ### Make php files available to Webserver
 
-**sudo ln -s /home/pi/PressureClickBarometer/Info.php /var/www/html/Info.php **
+**sudo ln -s /home/pi/PressureClickBarometer/Info.php /var/www/html/Info.php**
 
-**sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php **
+**sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php**
 
-php disgnostics
+###php disgnostics
 
 In browser access access **Info.php** on the Pi Webserver
 check "Loaded Configuration File". 
@@ -86,6 +86,8 @@ On my system is is **/etc/php5/apache2/php.ini**
 In configuration file change option Display Errors to
 
  **display_errors = On**
+
+###pChart
 
 Download pchart from [pChart DownLoad](http://www.pchart.net/download)
 
