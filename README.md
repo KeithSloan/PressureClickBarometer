@@ -78,7 +78,7 @@ I will add instructions to run on boot later
 
 Installing apache2, php5, php5-gd
 
-**sudo apt-get install -y apache2, php5, php5-gd**
+**sudo apt-get install -y apache2 php5 php5-gd**
 
 ### Make php files available to Webserver
 
