@@ -112,6 +112,10 @@ soft links to /var/www/html
 
 You should now be able to access the Pi's Webserver and run Barometer.php
 
+##To Do
+1. Run LogSensor at boot up
+2. Consider automatic web page refresh
+
 ##Feedback
 
     Feedback to keith@sloan-home.co.uk
