@@ -3,7 +3,7 @@ import csv
 import time, os
 
 Number = 100
-TimeDelay = 60
+TimeDelay = 300
 
 def GetTemperature() :
     Temp_LSB = bus.read_byte_data(0x5d, 0x2b)
@@ -42,30 +42,30 @@ os.system("rm -f /var/ram/temp.csv")
 while True :
    if os.path.isfile("/var/ram/readings.csv") :
       os.system("mv /var/ram/readings.csv /var/ram/temp.csv")
-      with open("/var/ram/readings.csv","wb") as datafile:
-           writer = csv.writer(datafile)
+   with open("/var/ram/readings.csv","wb") as datafile:
+        writer = csv.writer(datafile)
 
-           #option to do a single read
-           #write value 0b1 to register 0x21 on device at address 0x5d
-           bus.write_byte_data(0x5d,0x21, 0b1)
-           temperature = GetTemperature()
-           pressure    = GetPressure() 
+        #option to do a single read
+        #write value 0b1 to register 0x21 on device at address 0x5d
+        bus.write_byte_data(0x5d,0x21, 0b1)
+        temperature = GetTemperature()
+        pressure    = GetPressure() 
 
-#          print "Temperature: %.2f" % temperature
-#          print "Pressure   : %.2f" % pressure
-           print "Temperature: ", temperature
-           print "Pressure   : ", pressure
+#       print "Temperature: %.2f" % temperature
+#       print "Pressure   : %.2f" % pressure
+        print "Temperature: ", temperature
+        print "Pressure   : ", pressure
 
-           writer.writerow(["Temperature","Pressure"])
-           writer.writerow([temperature,pressure])
-           if os.path.isfile("/var/ram/temp.csv") :
-              with open("/var/ram/temp.csv","rb") as tmpfile:
-                   reader = csv.reader(tmpfile)
-	           next(reader, None) # skip header 
-                   x = 0
-                   for row in reader:
-                       if x < Number:
-                          #print(row)
-                          writer.writerow(row)
-                          x = x + 1
+        writer.writerow(["Temperature","Pressure"])
+        writer.writerow([temperature,pressure])
+        if os.path.isfile("/var/ram/temp.csv") :
+           with open("/var/ram/temp.csv","rb") as tmpfile:
+                reader = csv.reader(tmpfile)
+                next(reader, None) # skip header 
+                x = 0
+                for row in reader:
+                    if x < Number:
+                       #print(row)
+                       writer.writerow(row)
+                       x = x + 1
    time.sleep(TimeDelay)
