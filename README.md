@@ -3,7 +3,7 @@
 
 A web based Barometer using a Mikrobus Pressure Click on a Raspberry Pi
 
-Having been a fan of Matrix Multimeter E-Blocks system whilst developing on Microchip PIC's I was keen to try out MikroElekronica's Mikrobus system on the Raspberry Pi. The Mikrobus system making it easy to add sensors in a building block fashion. There are hundreds of different Mikrobus click's available (They are not only usable with the Raspberry but also Beagle Bone Black and Arduino have expansion boards for the Mikrobus system).
+Having been a fan of Matrix Multimeter E-Blocks system whilst developing on Microchip PIC's I was keen to try out MikroElekronica's Mikrobus system on the Raspberry Pi. The Mikrobus system makes it easy to add sensors in a building block fashion. There are hundreds of different Mikrobus click's available (They are not only usable with the Raspberry but also Beagle Bone Black and Arduino have expansion boards for the Mikrobus system).
 
 As I have a Raspberry Pi as my webserver I liked the idea of adding a web based Charting Barograph. Many years ago when I did gliding. The gliding club had a analogue charting Barograph and it was useful to give a hint as to when the clouds might start to lift. I therefore ordered a Pressure sensor, only to later discoer that I might have done better with a weather sensor
 ## Hardware
@@ -25,27 +25,68 @@ From directory /home/pi issue command
 **git clone https://github.com/KeithSloan/PressureClickBarometer.git**
 
 ## Setting up I2C
-configuring pi
-Setting up I2C sofware`
-i2c dev
-### Testing I2C sensor
+I2C must be enabled on the Raspberry Pi - 
+see [Setting up I2C](http://www.raspberrypi-spy.co.uk/2014/11/enabling-the-i2c-interface-on-the-raspberry-pi)
+
+When you get to the testing stage i.e. Running 
+**sudo i2cdetect -y 1**
+
+You should see an I2C device at address 5d
 
 ### Setting up ram file system
-Logging Sensor readings
+To avoid stress on my SD card I setup a ram filing system at /var/ram
+First create the tmp dir:
+
+ **sudo mkdir /var/ram** 
+
+then edit the fstab file by
+
+ **sudo nano /etc/fstab**
+
+and add the line
+
+ **tmpfs /var/ram tmpfs nodev,nosuid,size=1M 0 0** 
+
+save and close the file. Now issue
+
+ **sudo mount -a**
+
+To check if your operation succeeded issue
+
+ **df**
+### Running LogServer.py
+
+python /home/pi/PressureClickBarometer/LogSensor.py
+
+Once you are happy it is workinhg okay ctrl-C and this time run
+python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &
+
+I will add instructions to run on boot later
+
 ### Setting up webserver
 Installing apache2, php5, php5-gd
+**sudo apt-get install -y apache2, php5, php5-gd**
+
+### Make php files available to Webserver
+
+**sudo ln -s /home/pi/PressureClickBarometer/Info.php /var/www/html/Info.php **
+**sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php **
+
 php disgnostics
-Download pchart
+
+In browser access access Info.php on the Pi Webserver
+check "Loaded Configuration File". On my system is is /etc/php5/apache2/php.ini 
+
+In configuration file change option Display Errors to
+ **display_errors = On**
+
+Download pchart from [pChart DownLoad](http://www.pchart.net/download)
+I unzipped to /home/pi/pChart/pChart2.1.4
+
 soft links to /var/www/html
+**sudo ln -s /home/pi/pChart/pChart2.1.4 /var/www/html/pChart**
 
-**bold**
-* Item 1
-* Item 2
-  * Item 2a
-  * Item 2b
-
-1. Item 1
-2. Item 2
+You should now be able to access the Pi's Webserver and run Barometer.php
 
 ##Feedback
 
