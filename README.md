@@ -58,7 +58,7 @@ To check if your operation succeeded issue
 
 **python /home/pi/PressureClickBarometer/LogSensor.py**
 
-Once you are happy it is workinhg okay ctrl-C and this time run
+Once you are happy it is working okay ctrl-C and this time run
 
 **python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &**
 
