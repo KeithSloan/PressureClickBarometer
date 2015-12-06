@@ -85,8 +85,8 @@ You can find the hostname of the pi by running the command
 
 **hostname**
 
-Then in a browser access URL <hostname>.local
-Where <hostname> is the name returned by the hostname command
+Then in a browser access URL "<hostname>".local
+Where "<hostname>" is the name returned by the hostname command
 
 check "Loaded Configuration File". 
 
