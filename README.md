@@ -35,7 +35,7 @@ You should see an I2C device at address 5d
 
 Once you can see the I2C device at 5d you can check the sensor is working by running
 
-**python /home/pi/PressureClickBarometer/ReadSensot.py**
+**python /home/pi/PressureClickBarometer/ReadSensor.py**
 
 ### Setting up ram file system
 To avoid stress on my SD card I setup a ram filing system at /var/ram
