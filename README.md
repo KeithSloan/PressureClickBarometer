@@ -73,7 +73,6 @@ Installing apache2, php5, php5-gd
 ### Make php files available to Webserver
 
 **sudo ln -s /home/pi/PressureClickBarometer/Info.php /var/www/html/Info.php**
-
 **sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php**
 
 ###php disgnostics
