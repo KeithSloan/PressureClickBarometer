@@ -94,7 +94,7 @@ where hostname is the name returned by the hostname command
 
 check "Loaded Configuration File". 
 
-On my system is is **/etc/php5/apache2/php.ini** 
+On my system it is **/etc/php5/apache2/php.ini** 
 
 In configuration file change option Display Errors to
 
