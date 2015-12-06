@@ -80,7 +80,14 @@ Installing apache2, php5, php5-gd
 
 ###php disgnostics
 
-In browser access access **Info.php** on the Pi Webserver
+In browser access access **Info.php** on the Pi Webserver.
+You can find the hostname of the pi by running the command
+
+**hostname**
+
+Then in a browser access URL <hostname>.local
+Where <hostname> is the name returned by the hostname command
+
 check "Loaded Configuration File". 
 
 On my system is is **/etc/php5/apache2/php.ini** 
