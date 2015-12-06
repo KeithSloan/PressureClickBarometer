@@ -76,6 +76,7 @@ Installing apache2, php5, php5-gd
 ### Make php files available to Webserver
 
 **sudo ln -s /home/pi/PressureClickBarometer/Info.php /var/www/html/Info.php**
+
 **sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php**
 
 ###php disgnostics
@@ -85,8 +86,8 @@ You can find the hostname of the pi by running the command
 
 **hostname**
 
-Then in a browser access URL "<hostname>".local
-Where "<hostname>" is the name returned by the hostname command
+Then in a browser access URL **<hostname>.local**
+Where **<hostname>** is the name returned by the hostname command
 
 check "Loaded Configuration File". 
 
