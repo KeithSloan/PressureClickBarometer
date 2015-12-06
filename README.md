@@ -56,15 +56,18 @@ To check if your operation succeeded issue
  **df**
 ### Running LogServer.py
 
-python /home/pi/PressureClickBarometer/LogSensor.py
+**python /home/pi/PressureClickBarometer/LogSensor.py**
 
 Once you are happy it is workinhg okay ctrl-C and this time run
-python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &
+
+**python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &**
 
 I will add instructions to run on boot later
 
 ### Setting up webserver
+
 Installing apache2, php5, php5-gd
+
 **sudo apt-get install -y apache2, php5, php5-gd**
 
 ### Make php files available to Webserver
@@ -74,16 +77,21 @@ Installing apache2, php5, php5-gd
 
 php disgnostics
 
-In browser access access Info.php on the Pi Webserver
-check "Loaded Configuration File". On my system is is /etc/php5/apache2/php.ini 
+In browser access access **Info.php** on the Pi Webserver
+check "Loaded Configuration File". 
+
+On my system is is **/etc/php5/apache2/php.ini** 
 
 In configuration file change option Display Errors to
+
  **display_errors = On**
 
 Download pchart from [pChart DownLoad](http://www.pchart.net/download)
+
 I unzipped to /home/pi/pChart/pChart2.1.4
 
 soft links to /var/www/html
+
 **sudo ln -s /home/pi/pChart/pChart2.1.4 /var/www/html/pChart**
 
 You should now be able to access the Pi's Webserver and run Barometer.php
