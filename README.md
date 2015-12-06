@@ -62,6 +62,9 @@ Once you are happy it is workinhg okay ctrl-C and this time run
 
 **python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &**
 
+Its worth checking that readings are being logged i.e. file /var/ram/readings.csv
+exits and has reasonable values
+
 I will add instructions to run on boot later
 
 ### Setting up webserver
