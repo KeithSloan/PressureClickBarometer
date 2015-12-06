@@ -56,6 +56,9 @@ To check if your operation succeeded issue
  **df**
 ### Running LogServer.py
 
+As supplied LogServer.py will record 100 values taken approximately every 5 mins.
+You can alter these value by changing the variables at the start of the python code.
+
 **python /home/pi/PressureClickBarometer/LogSensor.py**
 
 Once you are happy it is working okay ctrl-C and this time run
@@ -63,7 +66,7 @@ Once you are happy it is working okay ctrl-C and this time run
 **python /home/pi/PressureClickBarometer/LogSensor.py > /dev/null &**
 
 Its worth checking that readings are being logged i.e. file /var/ram/readings.csv
-exits and has reasonable values
+exits and has reasonable values.
 
 I will add instructions to run on boot later
 
