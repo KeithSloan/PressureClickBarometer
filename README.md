@@ -86,7 +86,7 @@ Installing apache2, php5, php5-gd
 
 **sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php**
 
-###php disgnostics
+###php diagnostics
 
 In browser access access **Info.php** on the Pi Webserver.
 You can find the hostname of the pi by running the command
