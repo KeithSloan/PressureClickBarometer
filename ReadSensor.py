@@ -1,7 +1,15 @@
 import smbus
+import datetime
+
+def GetTime ():
+    now = datetime.datetime.now()
+    return (str(now.hour)+":"+str(now.minute)+"."+str(now.second))
+
 
 #init bus
 bus = smbus.SMBus(1)
+
+print GetTime()
 
 # power up LPS331AP pressure sensor
 bus.write_byte_data(0x5d, 0x20, 0b10000000)

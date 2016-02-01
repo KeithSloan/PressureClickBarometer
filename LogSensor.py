@@ -1,9 +1,14 @@
 import smbus
 import csv
 import time, os
+import datetime
 
 Number = 100
 TimeDelay = 300
+
+def GetTime() :
+    now = datetime.datetime.now()
+    return (str(now.hour)+":"+str(now.minute)+"."+str(now.second))
 
 def GetTemperature() :
     Temp_LSB = bus.read_byte_data(0x5d, 0x2b)
@@ -50,14 +55,16 @@ while True :
         bus.write_byte_data(0x5d,0x21, 0b1)
         temperature = GetTemperature()
         pressure    = GetPressure() 
+        timenow = GetTime()
 
 #       print "Temperature: %.2f" % temperature
 #       print "Pressure   : %.2f" % pressure
-        print "Temperature: ", temperature
-        print "Pressure   : ", pressure
+        print "Time        : ",timenow
+        print "Temperature : ", temperature
+        print "Pressure    : ", pressure
 
-        writer.writerow(["Temperature","Pressure"])
-        writer.writerow([temperature,pressure])
+        writer.writerow(["Time","Temperature","Pressure"])
+        writer.writerow([timenow,temperature,pressure])
         if os.path.isfile("/var/ram/temp.csv") :
            with open("/var/ram/temp.csv","rb") as tmpfile:
                 reader = csv.reader(tmpfile)

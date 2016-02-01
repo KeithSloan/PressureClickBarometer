@@ -5,15 +5,15 @@
 
 // phpinfo(); 
 /* pChart library inclusions */
-include("pChart/class/pData.class.php");
-include("pChart/class/pDraw.class.php");
-include("pChart/class/pImage.class.php");
+include("../pChart/class/pData.class.php");
+include("../pChart/class/pDraw.class.php");
+include("../pChart/class/pImage.class.php");
 
 /* Create the pData object with some random values*/
 $MyData = new pData();  
  
 /* Import the data from a CSV file */
-$MyData->importFromCSV("/var/ram/readings.csv",array("GotHeader"=>True)); 
+$MyData->importFromCSV("/var/ram/readings.csv",array("GotHeader"=>True,"SkipColumns"=>array(0))); 
 
 $MyData->setSerieOnAxis("Temperature",0);
 $MyData->setSerieOnAxis("Pressure",1);
@@ -37,7 +37,7 @@ $myPicture->drawText(647,55,"Latest Pressure :",array("FontSize"=>16,"Align"=>TE
 $myPicture->drawText(730,55,$latest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawFilledRectangle(90,60,750,450,array("R"=>0,"G"=>155,"B"=>155,"Surrounding"=>-200,"Alpha"=>10));
-$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>30),1=>array("Min"=>950,"Max"=>1050));
+$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>32),1=>array("Min"=>950,"Max"=>1050));
 $ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>FALSE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"LabelingMethod"=>LABELING_DIFFERENT,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>FALSE);
 $myPicture->drawScale($ScaleSettings);
 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
