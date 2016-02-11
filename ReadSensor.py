@@ -11,11 +11,13 @@ bus = smbus.SMBus(1)
 
 print GetTime()
 
-# power up LPS331AP pressure sensor
-bus.write_byte_data(0x5d, 0x20, 0b10000000)
+# power up LPS331AP pressure sensor & set BDU
+bus.write_byte_data(0x5d, 0x20, 0b10000100)
 
 #write value 0b1 to register 0x21 on device at address 0x5d
+# one shot enable
 bus.write_byte_data(0x5d,0x21, 0b1)
+
 
 Temp_LSB = bus.read_byte_data(0x5d, 0x2b)
 Temp_MSB = bus.read_byte_data(0x5d, 0x2c)

@@ -39,8 +39,8 @@ def GetPressure() :
 #init bus
 bus = smbus.SMBus(1)
 
-# power up LPS331AP pressure sensor
-bus.write_byte_data(0x5d, 0x20, 0b10000000)
+# power up LPS331AP pressure sensor & set BDU mode
+bus.write_byte_data(0x5d, 0x20, 0b10000100)
 
 os.system("rm -f /var/ram/temp.csv")
 
