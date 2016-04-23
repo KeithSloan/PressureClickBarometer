@@ -15,14 +15,23 @@ $MyData = new pData();
 /* Import the data from a CSV file */
 $MyData->importFromCSV("/var/ram/readings.csv",array("GotHeader"=>True,"SkipColumns"=>array(0))); 
 
+$MyData->setPalette("Temperature",array("R"=>255,"G"=>0,"B"=>255));
+$MyData->setPalette("CPU-Temp",array("R"=>128,"G"=>0,"B"=>128));
+$MyData->setPalette("Pressure",array("R"=>255,"G"=>0,"B"=>0));
+
 $MyData->setSerieOnAxis("Temperature",0);
-$MyData->setSerieOnAxis("Pressure",1);
+$MyData->setSerieOnAxis("CPU-Temp",1);
+$MyData->setSerieOnAxis("Pressure",2);
 $MyData->setAxisName(0,"Temperature");
-$MyData->setAxisName(1,"Presssure");
+$MyData->setAxisName(1,"Temperature"); 
+$MyData->setAxisName(2,"Pressure");
+$MyData->setAxisPosition(1,AXIS_POSITION_RIGHT); 
+
 /* Get latest value before reversing Series for plotting */
 $latest=$MyData->Data['Series']['Pressure']['Data'][0];
 /* Reverse series so latest value is on the right */
 $MyData->reverseSerie("Temperature");
+$MyData->reverseSerie("CPU-Temp");
 $MyData->reverseSerie("Pressure");
 $earliest=$MyData->Data['Series']['Pressure']['Data'][0];
 /* Create the chart*/
@@ -33,19 +42,19 @@ $myPicture->setGraphArea(90,60,750,450);
 $myPicture->drawText(395,55,"BAROMETER",array("FontSize"=>20,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $myPicture->drawText(163,55,"Earliest Pressure :",array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $myPicture->drawText(255,55,$earliest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
-$myPicture->drawText(647,55,"Latest Pressure :",array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
-$myPicture->drawText(730,55,$latest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
+$myPicture->drawText(637,55,"Latest Pressure :",array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
+$myPicture->drawText(718,55,$latest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawFilledRectangle(90,60,750,450,array("R"=>0,"G"=>155,"B"=>155,"Surrounding"=>-200,"Alpha"=>10));
-$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>32),1=>array("Min"=>950,"Max"=>1050));
-$ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>FALSE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"LabelingMethod"=>LABELING_DIFFERENT,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>FALSE);
+$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>70),1=>array("Min"=>0,"Max"=>70),2=>array("Min"=>950,"Max"=>1050));
+$ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>FALSE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"LabelingMethod"=>LABELING_DIFFERENT,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>FALSE,"DrawYLines"=>array(2));
 $myPicture->drawScale($ScaleSettings);
 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
 $myPicture->drawLineChart(array("DisplayValues"=>FALSE,"DisplayColor"=>DISPLAY_AUTO));
 //$myPicture->setShadow(FALSE);
 
 /* Write the chart legend */
-$myPicture->drawLegend(600,430,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
+$myPicture->drawLegend(550,430,array("Style"=>LEGEND_NOBORDER,"Mode"=>LEGEND_HORIZONTAL));
 $myPicture->autoOutput("/var/ram/chart.png"); 
 //$myPicture->Render("/var/ram/chart.png");
 //$myPicture->Stroke("/var/ram/chart.png"); 

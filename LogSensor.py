@@ -10,6 +10,11 @@ def GetTime() :
     now = datetime.datetime.now()
     return (str(now.hour)+":"+str(now.minute)+"."+str(now.second))
 
+def GetCPUTemp() :
+    res = os.popen("vcgencmd measure_temp").readline()
+    #print res
+    return(res.replace("temp=","").replace("'C\n",""))
+
 def GetTemperature() :
     Temp_LSB = bus.read_byte_data(0x5d, 0x2b)
     Temp_MSB = bus.read_byte_data(0x5d, 0x2c)
@@ -55,16 +60,18 @@ while True :
         bus.write_byte_data(0x5d,0x21, 0b1)
         temperature = GetTemperature()
         pressure    = GetPressure() 
+        cpu_temp = GetCPUTemp() 
         timenow = GetTime()
 
 #       print "Temperature: %.2f" % temperature
 #       print "Pressure   : %.2f" % pressure
         print "Time        : ",timenow
         print "Temperature : ", temperature
+        print "CPU-Temp    : ", cpu_temp
         print "Pressure    : ", pressure
 
-        writer.writerow(["Time","Temperature","Pressure"])
-        writer.writerow([timenow,temperature,pressure])
+        writer.writerow(["Time","Temperature","CPU-Temp","Pressure"])
+        writer.writerow([timenow,temperature,cpu_temp,pressure])
         if os.path.isfile("/var/ram/temp.csv") :
            with open("/var/ram/temp.csv","rb") as tmpfile:
                 reader = csv.reader(tmpfile)
