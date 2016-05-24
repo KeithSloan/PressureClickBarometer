@@ -15,7 +15,7 @@ $MyData = new pData();
 /* Import the data from a CSV file */
 $MyData->importFromCSV("/var/ram/readings.csv",array("GotHeader"=>True,"SkipColumns"=>array(0))); 
 
-$MyData->setPalette("Temperature",array("R"=>255,"G"=>0,"B"=>255));
+$MyData->setPalette("Temperature",array("R"=>0,"G"=>128,"B"=>0));
 $MyData->setPalette("CPU-Temp",array("R"=>128,"G"=>0,"B"=>128));
 $MyData->setPalette("Pressure",array("R"=>255,"G"=>0,"B"=>0));
 
@@ -47,7 +47,7 @@ $myPicture->drawText(718,55,$latest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOT
 $latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawFilledRectangle(90,60,750,450,array("R"=>0,"G"=>155,"B"=>155,"Surrounding"=>-200,"Alpha"=>10));
 $AxisBoundaries = array(0=>array("Min"=>0,"Max"=>70),1=>array("Min"=>0,"Max"=>70),2=>array("Min"=>950,"Max"=>1050));
-$ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>FALSE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"LabelingMethod"=>LABELING_DIFFERENT,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>FALSE,"DrawYLines"=>array(2));
+$ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>TRUE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>TRUE,"DrawYLines"=>array(2),"LabelSkip"=>11);
 $myPicture->drawScale($ScaleSettings);
 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
 $myPicture->drawLineChart(array("DisplayValues"=>FALSE,"DisplayColor"=>DISPLAY_AUTO));

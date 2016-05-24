@@ -3,7 +3,7 @@ import csv
 import time, os
 import datetime
 
-Number = 100
+Number = 120
 TimeDelay = 300
 
 def GetTime() :
