@@ -46,7 +46,7 @@ $myPicture->drawText(637,55,"Latest Pressure :",array("FontSize"=>16,"Align"=>TE
 $myPicture->drawText(718,55,$latest,array("FontSize"=>16,"Align"=>TEXT_ALIGN_BOTTOMMIDDLE));
 $latest=$MyData->Data['Series']['Pressure']['Data'][1];
 $myPicture->drawFilledRectangle(90,60,750,450,array("R"=>0,"G"=>155,"B"=>155,"Surrounding"=>-200,"Alpha"=>10));
-$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>70),1=>array("Min"=>0,"Max"=>70),2=>array("Min"=>950,"Max"=>1050));
+$AxisBoundaries = array(0=>array("Min"=>0,"Max"=>70),1=>array("Min"=>0,"Max"=>70),2=>array("Min"=>980,"Max"=>1020));
 $ScaleSettings = array("Mode"=>SCALE_MODE_MANUAL,"ManualScale"=>$AxisBoundaries,"DrawSubTicks"=>TRUE,"DrawArrows"=>TRUE,"ArrowSize"=>6,"CycleBackground"=>TRUE,"GridR"=>102,"GridG"=>102,"GridB"=>102,"DrawXLines"=>TRUE,"DrawYLines"=>array(2),"LabelSkip"=>11);
 $myPicture->drawScale($ScaleSettings);
 $myPicture->setShadow(TRUE,array("X"=>1,"Y"=>1,"R"=>0,"G"=>0,"B"=>0,"Alpha"=>10));
