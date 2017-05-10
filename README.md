@@ -1,4 +1,4 @@
-#Pressure Click Barometer
+## Pressure Click Barometer
 
 A web based Barometer using a Mikrobus Pressure Click on a Raspberry Pi
 
@@ -85,7 +85,7 @@ Installing apache2, php5, php5-gd
 
 **sudo ln -s /home/pi/PressureClickBarometer/Barometer.php /var/www/html/Barometer.php**
 
-###php diagnostics
+### php diagnostics
 
 In browser access access **Info.php** on the Pi Webserver.
 You can find the hostname of the pi by running the command
@@ -103,7 +103,7 @@ In configuration file change option Display Errors to
 
  **display_errors = On**
 
-###pChart
+### pChart
 
 Download pchart from [pChart DownLoad](http://www.pchart.net/download)
 
@@ -115,11 +115,11 @@ soft links to /var/www/html
 
 You should now be able to access the Pi's Webserver and run Barometer.php
 
-##To Do
+## To Do
 1. Run LogSensor at boot up
 2. Consider automatic web page refresh
 
-##Feedback
+## Feedback
 
     Feedback to keith@sloan-home.co.uk
 
